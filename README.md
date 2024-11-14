@@ -66,6 +66,9 @@ Test API routes in Insomnia or a similar tool to verify functionality.
 - `mongoose` -  ODM for MongoDB, manages schema and model setup.
 - `dotenv` - Loads environment variables from a .env file.
 
+## Walkthrough
+A complete walkthrough video demonstrating the application, its functionality, and the process of invoking it from Insomnia can be found at the following link: https://drive.google.com/file/d/11FImsXOMU0fM1JuxGlghGINnNAviH5J5/view?usp=sharing
+
 ## License
 This project is licensed under the MIT License, which allows you to freely use, modify, and distribute this software, provided proper attribution is given.
 

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",           // Output folder for compiled JS files
+    "target": "es2016",           // Set JavaScript version to ES6+
+    "module": "commonjs",         // Module system to use
+    "esModuleInterop": true,      // Allow for default imports
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,               // Enable strict type checking
+    "skipLibCheck": true,         // Skip checking libraries (to prevent errors from .d.ts files)
+    "moduleResolution": "node"    // Resolve modules like Node.js does
+  },
+  "include": ["src/**/*.ts"],       // Include all TypeScript files inside the src folder
+  "exclude": ["dist"]               // Exclude the dist folder (compiled JS)
+}
