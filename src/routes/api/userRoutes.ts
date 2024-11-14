@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import User from '../../models/User';
 import Thought from '../../models/Thought';
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -70,13 +71,26 @@ router.delete('/:userId', async (req: Request, res: Response): Promise<any> => {
 // Add a friend to the user's friend list
 router.post('/:userId/friends/:friendId', async (req: Request, res: Response): Promise<any> => {
   try {
-    const user = await User.findById(req.params.userId);
-    const friend = await User.findById(req.params.friendId);
+    const { userId, friendId } = req.params;
+    
+    // Check if user is trying to add themselves as a friend
+    if (userId === friendId) {
+      return res.status(400).json({ message: 'You cannot add yourself as a friend' });
+    }
+
+    const user = await User.findById(userId);
+    const friend = await User.findById(friendId);
 
     if (!user || !friend) {
       return res.status(404).json({ message: 'User or friend not found' });
     }
 
+    // Check if the user is already friends with the friend
+    if (user.friends.includes(new mongoose.Types.ObjectId(friendId))) {
+      return res.status(400).json({ message: 'User is already friends with this user' });
+    }
+
+    // Add the friend to the user's friend list
     user.friends.push(friend._id);
     await user.save();
     res.status(200).json(user);
@@ -88,12 +102,15 @@ router.post('/:userId/friends/:friendId', async (req: Request, res: Response): P
 // Remove a friend from the user's friend list
 router.delete('/:userId/friends/:friendId', async (req: Request, res: Response): Promise<any> => {
   try {
-    const user = await User.findById(req.params.userId);
+    const { userId, friendId } = req.params;
+    
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    user.friends = user.friends.filter(friend => friend.toString() !== req.params.friendId);  // Fixing the .pull issue
+    // Remove the friend from the user's friend list
+    user.friends = user.friends.filter(friend => friend.toString() !== friendId);
     await user.save();
     res.status(200).json(user);
   } catch (err: unknown) {
