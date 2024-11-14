@@ -11,13 +11,18 @@
 4. [Usage](#usage)
 5. [Tools and Technologies](#tools-and-technologies)
 6. [Dependencies and Installs](#dependencies-and-installs)
-7. [License](#license)
-8. [Contributing](#contributing)
-9. [Tests](#tests)
-10. [Questions](#questions)
+7. [Walkthrough](#walkthrough)
+8. [License](#license)
+9. [Contributing](#contributing)
+10. [Tests](#tests)
+11. [Questions](#questions)
 
 ## Description
 ThoughtBubble is a social networking API designed for sharing thoughts, reacting to posts, and building a friend list. Created with Express.js, MongoDB, and Mongoose, this project enables full CRUD operations for users, thoughts, reactions, and friend lists. The API is built with a flexible NoSQL database to handle large, unstructured data efficiently, making it ideal for social media applications. All routes can be tested and demonstrated using Insomnia.
+
+<img width="640" alt="Module 17 Challenge Screenshot - POST Create a User" src="https://github.com/user-attachments/assets/aadcdf50-bc99-4ca0-9ac8-639be402cc43">
+
+Example of adding a new user using a POST request
 
 ## Features
 - RESTful API for social networking functions.
@@ -30,6 +35,14 @@ ThoughtBubble is a social networking API designed for sharing thoughts, reacting
   - Friend Count: Counts and displays the number of friends a user has.
   - Reaction Count: Shows the number of reactions each thought has.
 - Timestamps on thoughts and reactions, formatted using getter methods.
+
+<img width="640" alt="Module 17 Challenge Screenshot - GET Single Thought by ID" src="https://github.com/user-attachments/assets/7a87fe71-38d4-443e-8a96-2b7c496549bc">
+
+Example of viewing a thought by ID using a GET request
+
+<img width="640" alt="Module 17 Challenge Screenshot - DELETE Remove a friend" src="https://github.com/user-attachments/assets/2400e484-2282-43ea-8a4b-415a133f3d01">
+
+Example of deleting a user by ID using a DELETE request
 
 ## Installation
 To use the application, follow these steps:
